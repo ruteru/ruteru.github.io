@@ -1,4 +1,4 @@
-#!C:\Users\Garci\OneDrive\Escritorio\vec\Portfolio\portfolio-website\venv\Scripts\python.exe
+#!C:\Users\Garci\OneDrive\Escritorio\ruteru.github.io\venv\Scripts\python.exe
 
 ##############################################################################
 #
