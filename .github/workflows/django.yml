@@ -36,9 +36,12 @@ jobs:
     - name: Set up Django environment
       run: |
         cd portfolio
-        if $env:OS -eq "Windows_NT" { $separator = "\" } else { $separator = "/" }
+        if [ "$OSTYPE" == "msys" ] || [ "$OSTYPE" == "win32" ]; then
+          separator="\"
+        else
+          separator="/"
+        fi
         python manage.py migrate
-
     - name: Collect static files
       run: |
         cd portfolio  
