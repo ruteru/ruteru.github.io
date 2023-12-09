@@ -31,29 +31,28 @@ jobs:
           else
             source venv/bin/activate
           fi
-          pip install -r portfolio/requirements.txt
+          python -m pip install -r portfolio/requirements.txt
 
       - name: Set up Django environment and run migrations
         run: |
+          source venv/bin/activate
           cd portfolio
-          if [ "$OSTYPE" == "msys" ] || [ "$OSTYPE" == "win32" ]; then
-            separator="\\"
-          else
-            separator="/"
-          fi
           python manage.py migrate
         shell: bash
 
       - name: Collect static files
         run: |
+          source venv/bin/activate
           cd portfolio
           python manage.py collectstatic --noinput
         shell: bash
 
       - name: Deploy to GitHub Pages
         run: |
+          source venv/bin/activate
           cd portfolio  
           git checkout -b gh-pages
           git add -f static/
           git commit -m "Add static files for GitHub Pages deployment"
           git push origin gh-pages
+
