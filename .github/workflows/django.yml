@@ -37,7 +37,7 @@ jobs:
       run: |
         cd portfolio
         if [ "$OSTYPE" == "msys" ] || [ "$OSTYPE" == "win32" ]; then
-          separator="\"
+          separator="\\"
         else
           separator="/"
         fi
