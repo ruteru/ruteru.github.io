@@ -55,6 +55,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add -f static/
           git commit -m "Add static files for GitHub Pages deployment"
+          git remote add origin_with_token "https://$GITHUB_TOKEN@github.com/${{ github.repository }}.git"
           git push --force --set-upstream origin_with_token gh-pages
           env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
