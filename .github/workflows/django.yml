@@ -50,10 +50,12 @@ jobs:
       - name: Deploy to GitHub Pages
         run: |
           cd portfolio
-          git remote add origin_with_token "https://${GH_TOKEN}@github.com/${{ github.repository }}.git"
-          git checkout -b gh-pages
+          git checkout -B gh-pages
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
           git add -f static/
           git commit -m "Add static files for GitHub Pages deployment"
-          git push --force --set-upstream origin_with_token gh-pages
+          git remote add origin_with_token "https://${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
+          git push --force origin HEAD:gh-pages
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
