@@ -26,7 +26,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m venv venv
-        if ($env:OS -eq "Windows_NT") { .\venv\Scripts\Activate.ps1 } else { source venv/bin/activate }
+        if [ "$OSTYPE" == "msys" ] || [ "$OSTYPE" == "win32" ]; then
+          source venv/Scripts/activate
+        else
+          source venv/bin/activate
+        fi
         pip install -r portfolio/requirements.txt
 
     - name: Set up Django environment
