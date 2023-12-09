@@ -56,5 +56,5 @@ jobs:
           git add -f static/
           git commit -m "Add static files for GitHub Pages deployment"
           git push --force --set-upstream origin_with_token gh-pages
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
