@@ -31,7 +31,8 @@ jobs:
 
     - name: Set up Django environment
       run: |
-        cd portfolio  
+        cd portfolio
+        python -m pip show django
         python manage.py migrate
 
     - name: Collect static files
