@@ -49,10 +49,13 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: |
-          cd portfolio  
+          cd portfolio
           git checkout -b gh-pages
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add -f static/
           git commit -m "Add static files for GitHub Pages deployment"
-          git push origin gh-pages
+          git remote add origin_with_token "https://github.com/${{ github.repository }}.git"
+          git push --set-upstream origin_with_token gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
