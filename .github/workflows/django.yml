@@ -47,6 +47,12 @@ jobs:
           python manage.py collectstatic --noinput
         shell: bash
 
-      
-
-
+      - name: Deploy to GitHub Pages
+        run: |
+          cd portfolio  
+          git checkout -b gh-pages
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add -f static/
+          git commit -m "Add static files for GitHub Pages deployment"
+          git push origin gh-pages
